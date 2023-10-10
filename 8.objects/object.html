@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objects</title>
+</head>
+<body>
+    <script>
+        const product = {
+            name: 'socks', // property-value pair
+            price: 1090
+        };
+        console.log(product);
+        console.log(product.name); // Dot Notation
+        console.log(product.price);
+
+        product.name = 'cotton socks';
+        console.log(product);
+
+        // add a new property to the object
+        product.newProperty = true;
+
+        // remove a property to the object
+        delete product.newProperty;
+
+
+        const product2 = {
+            name: 'shirt',
+            ['delievery-time']: '1 day', // Bracket Notation can create property that Dot Notation can't
+            rating:{
+                stars: 4.5,
+                count: 87
+            }, // Nesting Object
+            func: function func1(){
+                console.log('function inside object');
+            } // funciton is another type of value in javascript 
+        };
+        // Dot Notation
+        product2.name;
+        product2.delievery-time; // error, cause' Javascript think it has a minus sign and it tried to do Math
+
+        // Bracket Notation
+        product2['name'];
+        product2['delievery-time'] // will get a undefined
+
+        console.log(product2.rating.count);
+        product2.func();
+
+        // console is a Built-in Object
+        console.log(typeof console);
+        console.log(typeof console.log);
+
+        // JSON, a Built-in Object
+        // stands for JavaScript Object Notation
+        // a syntax similar to JavaScript object, but has less features
+        // JSON can be understood by almost every programming language
+        // so we use JSON to send data between computers & store Data
+
+        // object -> JSON string
+        const jsonString = JSON.stringify(product2); // it's converted to string with JSON syntax
+        // JSON don't support function
+
+        // JSON string -> object
+        JSON.parse(jsonString)
+
+        // Auto-Boxing
+        // Javascript 把各種 type 自動包成一個 object
+        // number or boolean 都有
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+        // null vs undifined
+        // null = intentionally wnat sth to be empty
+        function func(parameter = 'default'){
+            console.log(parameter);
+        }
+        // func(); => 'default'
+        // func(undefined); => 'default'
+        // func(null) => null
+        // in most cases though both work the same way
+
+        // object are references
+        // 是 pointer 喔
+        // compare 的時候也是比是不是指向同一個位置
+
+        // 各種簡寫
+
+        // 1. destructuring
+        const object4 = {
+            message: 'Good Job!',
+            price: 799
+        };
+        // const message = object4.message;
+        // const price = object4.price;
+        // 跟下面這個一樣
+        const {message, price} = object4;
+
+
+        // 2. shorthand property / shorthand Method
+        const object5 = {
+
+            // message: message
+            message, // shorthand Property，把變數丟進去，變成一個 property
+            
+
+            // 原本的 function 寫法
+            // method: function func1(){
+            //     console.log('GG');
+            // }
+            // 可以直接醬 // shorthand Method
+            method(){ 
+                console.log('GG');
+            }
+        }
+
+    </script>
+</body>
+</html>
